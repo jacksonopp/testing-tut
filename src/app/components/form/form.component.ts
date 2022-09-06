@@ -26,8 +26,9 @@ export class FormComponent implements OnInit {
   handleSubmit() {
     this.apiService.submitPerson(this.form.value.firstName, this.form.value.lastName).subscribe({
       next: (newPerson) => {
-        this.newPerson = newPerson;
         console.log(newPerson)
+        this.newPerson = newPerson;
+        this.errorMessage = undefined;
       },
       error: (err: Error) => {
         this.errorMessage = err.message

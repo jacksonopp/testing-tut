@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, ComponentFixtureNoNgZone, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { of, throwError } from 'rxjs';
@@ -63,6 +63,23 @@ describe('FormComponent', () => {
       expect(id).toBeTruthy();
       expect((id.nativeElement as HTMLParagraphElement).innerText).toContain('1')
     });
+
+    it('should clear the message', () => {
+      const de = fixture.debugElement.query(By.css('[data-test="error"]')).nativeElement as HTMLParagraphElement;
+      component.errorMessage = 'test'
+      fixture.detectChanges();
+      expect(de.innerText).toContain('test')
+
+      component.form.setValue({
+        firstName: 'first',
+        lastName: 'last'
+      })
+
+      component.handleSubmit()
+      fixture.detectChanges()
+      expect(de.innerText).not.toContain('test')
+
+    })
   })
 
   describe('unsuccessfully submitting the user', () => {
