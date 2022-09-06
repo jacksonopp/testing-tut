@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 export interface Person {
   id?: number,
@@ -39,6 +39,14 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   public submitPerson(firstName?: string | null, lastName?: string | null): Observable<Person> {
+    if (!firstName) {
+      return throwError(() => new Error('first name cannot be undefined'))
+    }
+
+    if (!lastName) {
+      return throwError(() => new Error('last name cannot be undefined'))
+    }
+
     return this.http.post<Person>('https://jsonplaceholder.typicode.com/users', {firstName, lastName})
   }
 }

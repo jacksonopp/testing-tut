@@ -11,6 +11,8 @@ export class FormComponent implements OnInit {
 
   public newPerson?: Person;
 
+  public errorMessage?: string;
+
   public form = this._fb.group({
     firstName: [''],
     lastName: ['']
@@ -26,6 +28,9 @@ export class FormComponent implements OnInit {
       next: (newPerson) => {
         this.newPerson = newPerson;
         console.log(newPerson)
+      },
+      error: (err: Error) => {
+        this.errorMessage = err.message
       }
     })
   }
