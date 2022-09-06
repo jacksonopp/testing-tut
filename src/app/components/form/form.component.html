@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="handleSubmit()">
+  <label for="first-name">First Name</label>
+  <input type="text" id="first-name" name="first-name" formControlName="firstName" />
+  <br>
+  <label for="last-name">Last Name</label>
+  <input type="text" id="last-name" name="last-name" formControlName="lastName" />
+  <br>
+  <button type="submit">Submit</button>
+</form>
+
+<p data-test="person-first-name">{{newPerson?.firstName}}</p>
+<p data-test="person-last-name">{{newPerson?.lastName}}</p>
+<p data-test="person-id">{{newPerson?.id}}</p>
