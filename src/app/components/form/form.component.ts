@@ -9,24 +9,13 @@ import { ApiService, Person } from 'src/app/services/api.service';
 })
 export class FormComponent implements OnInit {
 
-  public newPerson?: Person;
 
-  public form = this._fb.group({
-    firstName: [''],
-    lastName: ['']
-  })
-
-  constructor(private _fb: FormBuilder, private apiService: ApiService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
   handleSubmit() {
-    this.apiService.submitPerson(this.form.value.firstName, this.form.value.lastName).subscribe({
-      next: (newPerson) => {
-        this.newPerson = newPerson;
-        console.log(newPerson)
-      }
-    })
+
   }
 }

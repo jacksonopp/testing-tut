@@ -36,9 +36,7 @@ export interface User {
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
-  public submitPerson(firstName?: string | null, lastName?: string | null): Observable<Person> {
-    return this.http.post<Person>('https://jsonplaceholder.typicode.com/users', {firstName, lastName})
-  }
+  public submitPerson() {  }
 }
