@@ -9,8 +9,12 @@ import { ApiService, Person } from 'src/app/services/api.service';
 })
 export class FormComponent implements OnInit {
 
+  form = this._fb.group({
+    firstName: [''],
+    lastName: ['']
+  })
 
-  constructor() { }
+  constructor(private _fb: FormBuilder) { }
 
   ngOnInit(): void {
   }

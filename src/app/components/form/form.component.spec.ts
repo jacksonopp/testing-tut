@@ -1,8 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
-import { of } from 'rxjs';
-import { ApiService } from 'src/app/services/api.service';
 
 import { FormComponent } from './form.component';
 
@@ -12,6 +9,7 @@ describe('FormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule],
       declarations: [ FormComponent ],
     })
       .compileComponents();
