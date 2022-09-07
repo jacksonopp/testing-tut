@@ -1,5 +1,7 @@
 <p>Error</p>
 
+<p>{{test}}</p>
+
 <form [formGroup]="form">
   <label for="first-name">First Name</label>
   <input type="text" id="first-name" name="first-name" formControlName="firstName" />
@@ -10,6 +12,6 @@
   <button type="submit">Submit</button>
 </form>
 
-<p>First name:</p>
+<p data-test="first">First name: test</p>
 <p>Last name:</p>
 <p>Id:</p>

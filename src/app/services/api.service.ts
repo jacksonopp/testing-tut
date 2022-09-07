@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 export interface Person {
   id?: number,
@@ -36,7 +35,11 @@ export interface User {
 })
 export class ApiService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  public submitPerson() {  }
+  public submitPerson(firstName: string, lastName: string) {
+    return this.http.post<Person>('https://jsonplaceholder.typicode.com/users', {
+      firstName, lastName
+    })
+  }
 }
